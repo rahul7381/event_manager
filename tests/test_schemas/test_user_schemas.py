@@ -7,26 +7,31 @@ from app.schemas.user_schemas import UserBase, UserCreate, UserUpdate, UserRespo
 # Tests for UserBase
 def test_user_base_valid(user_base_data):
     user = UserBase(**user_base_data)
-    assert user.nickname == user_base_data["nickname"]
     assert user.email == user_base_data["email"]
+    assert user.nickname == user_base_data["nickname"]
+    assert user.first_name == user_base_data["first_name"]
+    assert user.last_name == user_base_data["last_name"]
 
 # Tests for UserCreate
 def test_user_create_valid(user_create_data):
     user = UserCreate(**user_create_data)
-    assert user.nickname == user_create_data["nickname"]
+    assert user.email == user_create_data["email"]
     assert user.password == user_create_data["password"]
+    assert user.nickname == user_create_data["nickname"]
 
 # Tests for UserUpdate
 def test_user_update_valid(user_update_data):
     user_update = UserUpdate(**user_update_data)
     assert user_update.email == user_update_data["email"]
     assert user_update.first_name == user_update_data["first_name"]
+    assert user_update.last_name == user_update_data["last_name"]
 
 # Tests for UserResponse
 def test_user_response_valid(user_response_data):
     user = UserResponse(**user_response_data)
     assert user.id == user_response_data["id"]
-    # assert user.last_login_at == user_response_data["last_login_at"]
+    assert user.email == user_response_data["email"]
+    assert user.role == user_response_data["role"]
 
 # Tests for LoginRequest
 def test_login_request_valid(login_request_data):
